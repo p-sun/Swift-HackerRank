@@ -21,38 +21,47 @@ To work with HackerRank questions quickly, I've included some helper methods to 
 
 "Palindrome"[1..<4] // "ali"
 
-"Padlindrome"[1] // "a"
+"Palindrome"[1] // "a"
 ```
 
 ## HackerRank Helpers for Reading Input
 
-Read the next integer that's on a single line.
-"3" 
+* Read the next integer that's on a single line.
+```
+3 
+```
 -> 3
 ```swift
 let int: Int = intForLine()
 ```
 
-Read input of numbers each on a separate line as an int array. 
+* Read input of numbers each on a separate line as an int array. 
+
 The first number denotes how many lines to read.
+```
 3 
 10 
 11 
 12
+```
 -> [10, 11, 12]
 ```swift
 let intArray: [Int] = intArrayForMultipleLines()
 ```
 
-Read input of a numbers separated by spaces as an int array.
-"1 2 3 4" 
+* Read input of a numbers separated by spaces as an int array.
+```
+1 2 3 4
+```
 -> [1, 2, 3, 4]
 ```swift
 let intArray: [Int] = intArrayForLine()
 ```
 
-Read input of a Strings separated by spaces as an String array.
-"Cat Dog Bird"
+* Read input of a Strings separated by spaces as an String array.
+```
+Cat Dog Bird
+```
 -> ["Cat", "Dog", "Bird"]
 ```swift
 let stringArray: [String] = stringArrayForLine()

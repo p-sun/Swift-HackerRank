@@ -14,7 +14,7 @@ import Foundation
 
 "Palindrome"[1..<4] // "ali"
 
-"Padlindrome"[1] // "a"
+"Palindrome"[1] // "a"
 /*:
  ## Input reading
  
