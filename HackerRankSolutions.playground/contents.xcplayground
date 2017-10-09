@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<playground version='6.0' target-platform='ios' display-mode='rendered' last-migration='0830'>
+    <pages>
+        <page name='Index'/>
+        <page name='How to format text with markup'/>
+        <page name='How to use HackerRank helpers'/>
+        <page name='Strings** - Cut Letters'/>
+        <page name='Strings** - Count Palindromes'/>
+        <page name='Strings* - Is Palindrome'/>
+        <page name='Array* - Making Anagrams'/>
+        <page name='Array** - Max Product of Two Ints'/>
+        <page name='Array* - Two Ints that Add to Target'/>
+        <page name='Array* - Max Sum of Two Ints'/>
+        <page name='Array* - Left Rotation'/>
+        <page name='Sort* - BubbleSort'/>
+        <page name='LinkedList* - Reverse a Doubly Linked List'/>
+        <page name='Tree* - Count The Longest Branch'/>
+        <page name='Dynamic Programming* - Fibonacci Numbers'/>
+    </pages>
+</playground>
