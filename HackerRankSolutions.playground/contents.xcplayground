@@ -15,6 +15,7 @@
         <page name='Sort* - BubbleSort'/>
         <page name='LinkedList* - Reverse a Doubly Linked List'/>
         <page name='Tree* - Count The Longest Branch'/>
-        <page name='Dynamic Programming* - Fibonacci Numbers'/>
+        <page name='DP* - Fibonacci Numbers'/>
+        <page name='DP*** - Coin Change'/>
     </pages>
 </playground>

@@ -73,9 +73,13 @@
  Sort an int array. Return the number of Swaps required to sort it.
 
  ### Dynamic Programming
- [Fibonacci Numbers](Dynamic%20Programming*%20-%20Fibonacci%20Numbers) | Easy |
+ [Fibonacci Numbers](DP*%20-%20Fibonacci%20Numbers) | Easy |
  [HackerRank](https://www.hackerrank.com/challenges/ctci-fibonacci-numbers/problem)
  \
  Return the Fibonacci number at index n.
+ \
+ [Coin Change](DP***%20-%20Coin%20Change) | Hard | [HackerRank](https://www.hackerrank.com/challenges/ctci-coin-change/problem) |  CTCI🌟
+ \
+ Given a target dollars amount, and a list of dollar values for distinct coins, print the number of ways you can make change for n dollars if each coin is available in an infinite quantity.
 */
-"String* - Is Palindrome".addingPercentEncoding()
+"DP*** - Coin Change".addingPercentEncoding()
