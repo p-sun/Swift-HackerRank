@@ -41,7 +41,6 @@
     
     // For each type of coin,
     for coin in coins {
-        print("coin = \(coin)")
         
         // For each sum value i from 1...target,
         for i in 1...target {
@@ -50,7 +49,6 @@
                 // combinations[i-coin] = For EVERY previous combination with a sum that is one coin value less than i, add the current coin to make a new combination summing to i.
                 // combinations[i] = # of combinations using coins smaller than the current coin.
                 combinations[i] = combinations[i] + combinations[i-coin]
-                print("i = \(i) \(combinations)")
             }
         }
     }
@@ -59,8 +57,8 @@
  }
  
  makeChange(coins: [1, 3], target: 6)
- 
- 
- 
- 
- 
+
+// Get HackeRank Input
+// let n = intArrayForLine()[0]
+// let coins = intArrayForLine()
+// print( makeChange(coins: coins, target: n))

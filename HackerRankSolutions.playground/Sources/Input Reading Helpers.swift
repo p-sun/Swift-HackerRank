@@ -15,11 +15,7 @@ public func intArrayForLine() -> [Int] {
 // Read input of a strings separated by spaces as an String array.
 // "Cat Dog Bird" -> ["Cat", "Dog", "Bird"]
 public func stringArrayForLine() -> [String] {
-    return readLine()!
-        .components(separatedBy: [" "])
-        .map {
-            String($0.trimmingCharacters(in: .whitespacesAndNewlines))
-    }
+    return readLine()!.components(separatedBy: [" "])
 }
 
 // Read input of numbers each on a separate line as an int array.

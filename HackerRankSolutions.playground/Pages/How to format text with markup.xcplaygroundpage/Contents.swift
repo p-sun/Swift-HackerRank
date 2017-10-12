@@ -26,11 +26,11 @@
 
  [Apple Documentation on markups](https://developer.apple.com/library/content/documentation/Xcode/Reference/xcode_markup_formatting_ref/MarkupFunctionality.html#//apple_ref/doc/uid/TP40016497-CH54-SW1)
  
- [next Playgroud page](@next)
+ [Next Playgroud page](@next)
  
- [previous Playgroud page](@previous)
+ [Previous Playgroud page](@previous)
  
- [a specific Playground page by name](HackerRankHelpers%20Demo)
+ [Specific Playground page by name](How%20to%20use%20HackerRank%20helpers)
 
  ---
  ### Callouts
@@ -48,7 +48,7 @@
  Change the third case statement to work only with consonants
 
  
-    "Block Code Samples are indented and surrounded by empty lines:"
+    "Block Code Samples are indented and sandwiched by empty lines:"
     for character in "Aesop" {
         print(character)}
     }

@@ -62,7 +62,7 @@ Read input of a numbers separated by spaces as an int array.
      
      // Solution ----------------------
      func numberNeeded(_ first: String, _ second: String) -> Int {
-     return 0
+        return 0
      }
      
      // HackerRank Helpers ------------
