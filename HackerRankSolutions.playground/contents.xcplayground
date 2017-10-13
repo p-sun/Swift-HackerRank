@@ -18,5 +18,7 @@
         <page name='DP* - Fibonacci Numbers'/>
         <page name='DP*** - Coin Change'/>
         <page name='Trie*** - Count Leaves'/>
+        <page name='Array*** - Add Interval'/>
+        <page name='Array** - Merge Intervals'/>
     </pages>
 </playground>

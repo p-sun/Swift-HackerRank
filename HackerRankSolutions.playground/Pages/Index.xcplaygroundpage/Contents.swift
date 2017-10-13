@@ -29,8 +29,16 @@
  [Max Sum of Two Ints](Array*%20-%20Max%20Sum%20of%20Two%20Ints) | Easy
  \
  Given an integer array, return the greatest SUM of any of the two numbers.
-
-[Left Rotation](Array*%20-%20Left%20Rotation) | Easy | [HackerRank](https://www.hackerrank.com/challenges/ctci-array-left-rotation/problem) | CTCI🌟
+ 
+ [Merge Intervals](Array**%20-%20Merge%20Intervals) | Medium | [LeetCode](https://leetcode.com/problems/merge-intervals/description/)
+ \
+ Given a collection of intervals, merge all overlapping intervals.
+ 
+ [Add Interval]("Array***%20-%20Add%20Interval") | Hard
+ \
+ Given a collection of sorted intervals with no overlapping intervals, add a new interval.
+ 
+ [Left Rotation](Array*%20-%20Left%20Rotation) | Easy | [HackerRank](https://www.hackerrank.com/challenges/ctci-array-left-rotation/problem) | CTCI🌟
  \
  Rotate an array by d positions to the left.
 
@@ -65,12 +73,12 @@
  [Count Longest Branch](Tree*%20-%20Count%20The%20Longest%20Branch) | Easy
  \
  Given a Node with left and right child nodes, count the longest branch in the tree.
- \
+ 
  ### Data Structures - Trie
  [Count Leaves](Trie***%20-%20Count%20Leaves) | Hard | [HackerRank](https://www.hackerrank.com/challenges/ctci-contacts/problem) | CTCI🌟
  \
  Given a word, add that word to a trie. Given a String prefix, return the number of words with that prefix.
- \
+ 
  ### Sorting
  
  [BubbleSort](Sort*%20-%20BubbleSort) | Easy | [HackerRank](https://www.hackerrank.com/challenges/ctci-bubble-sort/problem) | CTCI🌟
@@ -82,9 +90,9 @@
  [HackerRank](https://www.hackerrank.com/challenges/ctci-fibonacci-numbers/problem)
  \
  Return the Fibonacci number at index n.
- \
+ 
  [Coin Change](DP***%20-%20Coin%20Change) | Hard | [HackerRank](https://www.hackerrank.com/challenges/ctci-coin-change/problem) |  CTCI🌟
  \
  Given a target dollars amount, and a list of dollar values for distinct coins, print the number of ways you can make change for n dollars if each coin is available in an infinite quantity.
 */
-"Trie*** - Count Leaves".addingPercentEncoding()
+"Array*** - Add Interval".addingPercentEncoding()
