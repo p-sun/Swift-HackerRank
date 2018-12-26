@@ -9,10 +9,10 @@ import Foundation
 func numberNeeded(_ a: String, _ b: String) -> Int {
     var letters: [Character: Int] = [:]
     
-    for c in a.characters {
+    for c in a.charactersArray() {
         letters[c] = (letters[c] ?? 0) + 1
     }
-    for c in b.characters {
+    for c in b.charactersArray() {
         letters[c] = (letters[c] ?? 0) - 1
     }
 

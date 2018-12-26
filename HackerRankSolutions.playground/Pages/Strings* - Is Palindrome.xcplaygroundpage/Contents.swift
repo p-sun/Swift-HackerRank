@@ -8,7 +8,7 @@ import Foundation
 // https://leetcode.com/problems/valid-palindrome/description
 // A palindrome test that cleans the string to contain only lowercase alphanumerics.
 func isPalindrome(_ s: String) -> Bool {
-    let characters = s.lowercased().characters
+    let characters = s.lowercased().charactersArray()
     
     // Only keep alphanumeric characters.
     let cleaned = characters.filter { character in        
@@ -29,7 +29,7 @@ isPalindrome("A man, a plan, a canal: Panama")
 // Doesn't clean the string.
 // Requires the String extension underneath to work with substrings.
 func isPalindromeA(_ s: String) -> Bool {
-    let total = s.characters.count
+    let total = s.count
     
     for i in 0 ..< total/2 {
         if s[i] != s[total - 1 - i] {
@@ -47,7 +47,7 @@ isPalindromeA("A man, a plan, a canal: Panama")
 //: ## Method B
 // Behaves like method A, except it doesn't need a String extension.
 func isPalindromeB(_ s: String) -> Bool {
-    let chars = s.characters.filter{ _ in return true }
+    let chars = s.charactersArray()
     
     let total = chars.count
     

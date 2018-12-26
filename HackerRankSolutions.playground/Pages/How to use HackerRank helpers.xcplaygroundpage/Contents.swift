@@ -10,11 +10,22 @@ import Foundation
 
 ["a", "b", "c"].string() // "abc"
 
-"Palindrome"[1...4] //"alin"
-
-"Palindrome"[1..<4] // "ali"
-
 "Palindrome"[1] // "a"
+"Palindrome"[1..<4] // "ali"
+"Palindrome"[1...4] //"alin"
+"Palindrome"[1...]  // => bcde
+"Palindrome"[...3]  // => abcd
+"Palindrome"[..<3]  // => abc
+
+// With substrings:
+let sub = "abcde"[0...]
+type(of: sub)
+sub[1]     // => b
+sub[1..<3] // => bc
+sub[1...3] // => bcd
+sub[1...]  // => bcde
+sub[...3]  // => abcd
+sub[..<3]  // => abc
 /*:
  ## Input reading
  

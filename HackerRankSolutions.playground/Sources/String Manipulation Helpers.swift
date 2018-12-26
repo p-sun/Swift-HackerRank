@@ -1,33 +1,56 @@
 import Foundation
 
+
+// MARK: - String Subscript Extensions
 public extension String {
     // Get the character at index.
     // "Hello"[1] = "e"
-    subscript(_ offset: Int) -> String {
-        let stringIndex = index(startIndex, offsetBy: offset)
-        return self[stringIndex...stringIndex]
-    }
-    
+	subscript (i: Int) -> Character {
+		return self[index(startIndex, offsetBy: i)]
+	}
+
+	// Get a subrange. i.e. "Palindrome"[1..<4] = "ali"
+	subscript (bounds: CountableRange<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		return self[start ..< end]
+	}
+	
     // Get a subrange. i.e. "Palindrome"[1...4] = "alin"
     // See why Swift lang doesn't have this by default: https://stackoverflow.com/questions/45497705/subscript-is-unavailable-cannot-subscript-string-with-a-countableclosedrange/46627527#46627527
-    subscript (bounds: CountableClosedRange<Int>) -> String {
-        let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(start, offsetBy: bounds.upperBound - bounds.lowerBound)
-        return self[start...end]
-    }
-    
-    // Get a subrange. i.e. "Palindrome"[1..<4] = "ali"
-    subscript (bounds: CountableRange<Int>) -> String {
-        let start = index(startIndex, offsetBy: bounds.lowerBound)
-        let end = index(start, offsetBy: bounds.upperBound - bounds.lowerBound)
-        return self[start..<end]
-    }
-    
-    // To work with interview questions quickly, convert between String <-> [Character].
-    // This way, you can use Array subscripts on it.
-    func charactersArray() -> [Character] {
-        return self.characters.filter{ _ in return true }
-    }
+	subscript (bounds: CountableClosedRange<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		return self[start ... end]
+	}
+	
+	// "Palindrome"[1...]
+	subscript (bounds: CountablePartialRangeFrom<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(endIndex, offsetBy: -1)
+		return self[start ... end]
+	}
+	
+	// "Palindrome"[...3]
+	subscript (bounds: PartialRangeThrough<Int>) -> Substring {
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		return self[startIndex ... end]
+	}
+	
+	// "Palindrome"[..<3]
+	subscript (bounds: PartialRangeUpTo<Int>) -> Substring {
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		return self[startIndex ..< end]
+	}
+}
+
+// MARK: - Character Helpers
+public extension String {
+	// To work with questions quickly, convert between String <-> [Character].
+	// This way, you can use Array subscripts on it.
+	func charactersArray() -> [Character] {
+		return self.map { $0 }
+	}
 }
 
 public extension Array where Iterator.Element == Character {
@@ -42,6 +65,7 @@ public extension Array where Iterator.Element == Character {
     // Give a substring for characters starting from start to end
     func string(start: Int, end: Int) -> String {
         guard start >= 0 && end < self.count && start <= end else {
+			print("substring index out of bounds")
             return ""
         }
         
@@ -51,4 +75,33 @@ public extension Array where Iterator.Element == Character {
         }
         return result
     }
+}
+
+public extension Substring {
+	subscript (i: Int) -> Character {
+		return self[index(startIndex, offsetBy: i)]
+	}
+	subscript (bounds: CountableRange<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		return self[start ..< end]
+	}
+	subscript (bounds: CountableClosedRange<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		return self[start ... end]
+	}
+	subscript (bounds: CountablePartialRangeFrom<Int>) -> Substring {
+		let start = index(startIndex, offsetBy: bounds.lowerBound)
+		let end = index(endIndex, offsetBy: -1)
+		return self[start ... end]
+	}
+	subscript (bounds: PartialRangeThrough<Int>) -> Substring {
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		return self[startIndex ... end]
+	}
+	subscript (bounds: PartialRangeUpTo<Int>) -> Substring {
+		let end = index(startIndex, offsetBy: bounds.upperBound)
+		return self[startIndex ..< end]
+	}
 }
