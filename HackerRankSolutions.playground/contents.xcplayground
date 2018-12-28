@@ -20,5 +20,6 @@
         <page name='Trie*** - Count Leaves'/>
         <page name='Array*** - Add Interval'/>
         <page name='Array** - Merge Intervals'/>
+        <page name='Permutations* - Count Cubes'/>
     </pages>
 </playground>
