@@ -40,6 +40,7 @@ func longestCommonSubsequence(a: [Int], b: [Int]) -> [Int] {
  Optimization 1:
  - Use indicies to navigate arrays, instead of creating new arrays to pass into functions
  - e.g. aLastInd is the `last index of array a`
+ 
  Optimization 2:
  - Memorization
  */
@@ -89,6 +90,7 @@ func longestCommonSubsequenceM(a: [Int], b: [Int]) -> [Int] {
 /*:
  ## Method 3: Memorization with Int Key
  ### Extremely small optimization for HackerRank (0.00042s improvement)
+  (Sometimes it's faster, sometimes it isn't)
  
  Optimization 1 & 2 is same as above
  
@@ -161,21 +163,25 @@ func longestCommonSubsequenceMWithInt(a: [Int], b: [Int]) -> [Int] {
 }
 
 var start = Date()
+var end: TimeInterval = 0
 longestCommonSubsequence(a: [1,2,3,2,4,1,2], b: [2,4,3,1,2,1]) // 2 3 2 1 & others
 longestCommonSubsequence(a: [1,2,3,4,1], b: [3,4,1,2,1,3]) // 1 2 3 & others
 longestCommonSubsequence(a: [3,9,8,3,9,7,9,7,0], b: [3,3,9,9,9,1,7,2,0,6]) // 3 9 9 9 7 0 & others
-print("Recursive: ", Date().timeIntervalSince(start))
+end = Date().timeIntervalSince(start)
+print("Recursive: ", end)
 
 
 start = Date()
 longestCommonSubsequenceM(a: [1,2,3,2,4,1,2], b: [2,4,3,1,2,1])
 longestCommonSubsequenceM(a: [1,2,3,4,1], b: [3,4,1,2,1,3])
 longestCommonSubsequenceM(a: [3,9,8,3,9,7,9,7,0], b: [3,3,9,9,9,1,7,2,0,6])
-print("Memorization: ", Date().timeIntervalSince(start))
+end = Date().timeIntervalSince(start)
+print("Memorization: ", end)
 
 
 start = Date()
 longestCommonSubsequenceMWithInt(a: [1,2,3,2,4,1,2], b: [2,4,3,1,2,1])
 longestCommonSubsequenceMWithInt(a: [1,2,3,4,1], b: [3,4,1,2,1,3])
 longestCommonSubsequenceMWithInt(a: [3,9,8,3,9,7,9,7,0], b: [3,3,9,9,9,1,7,2,0,6])
-print("Memorization assuming each array has length < 100: ", Date().timeIntervalSince(start))
+end = Date().timeIntervalSince(start)
+print("Memorization assuming each array has length < 100: ", end)
