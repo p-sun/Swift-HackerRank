@@ -65,7 +65,7 @@ Read input of a numbers separated by spaces as an int array.
  ## Output printing
  HackerRank expects element in an array to be separated by spaces.
  */
-[1, 2, 3, 4].printArray() // "1 2 3 4"
+[1, 2, 3, 4].printArrayWithSpaces() // "1 2 3 4"
 /*:
 ## Basic HackerRank Solution Template
  

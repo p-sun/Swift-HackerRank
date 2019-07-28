@@ -21,4 +21,4 @@ let array = [1, 2, 3, 4, 5] //intArrayForLine()
 
 // Execute Test
 let result = rotateLeft(array, rotateBy: rotateBy)
-result.printArray() // [5, 1, 2, 3, 4]
+result.printArrayWithSpaces() // [5, 1, 2, 3, 4]
