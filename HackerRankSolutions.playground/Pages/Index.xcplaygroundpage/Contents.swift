@@ -94,5 +94,9 @@
  [Coin Change](DP***%20-%20Coin%20Change) | Hard | [HackerRank](https://www.hackerrank.com/challenges/ctci-coin-change/problem) |  CTCI🌟
  \
  Given a target dollars amount, and a list of dollar values for distinct coins, print the number of ways you can make change for n dollars if each coin is available in an infinite quantity.
+ 
+ [Longest Common Subsequence](DP**%20-%20Longest%20Common%20Subsequence) | Medium | [HackerRank](https://www.hackerrank.com/challenges/dynamic-programming-classics-the-longest-common-subsequence/problem) |  CTCI🌟
+ \
+ Given 2 sequences, what's the longest (max length) common subsequences to both sequences?
 */
-"Array*** - Add Interval".addingPercentEncoding()
+print("DP** - Longest Common Subsequence".addingPercentEncoding())
