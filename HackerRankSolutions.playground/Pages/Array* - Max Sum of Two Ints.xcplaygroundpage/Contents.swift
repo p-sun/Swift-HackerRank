@@ -18,4 +18,4 @@ func sumOfLargestTwo(_ array: [Int]) -> Int {
     return largest + secondLargest
 }
 
-sumOfLargestTwo([3, 4, 2, 8, 9]) // 17
+assert(sumOfLargestTwo([3, 4, 2, 8, 9]) == 17)

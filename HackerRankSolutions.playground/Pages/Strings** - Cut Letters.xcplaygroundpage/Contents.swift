@@ -1,6 +1,6 @@
 /*:
 # Count Cuts of Letters
-Given a String, cut 0 to count-1 letters from it.
+Given a String with characters ordered alphabetically, cut a continuous block of 0 to count-1 letters from it.
 * Print return all permutations of the cuts, in alphabetically sorted order.
 
 * i.e. "abc" has 6 permutation after cuts of letters are removed.

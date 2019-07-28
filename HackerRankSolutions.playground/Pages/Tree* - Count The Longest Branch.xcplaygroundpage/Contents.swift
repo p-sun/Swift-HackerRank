@@ -1,5 +1,4 @@
-// Count the longest branch on a tree.
-
+//: # Count the longest branch on a tree
 class Node {
     var left: Node?
     var right: Node?
@@ -17,7 +16,7 @@ func longestBranchCount(_ node: Node) -> Int {
     } else {
         leftCount = 0
     }
-
+    
     let rightCount: Int
     if let rightNode = node.right {
         rightCount = 1 + longestBranchCount(rightNode)
@@ -32,26 +31,26 @@ longestBranchCount(Node(nil, nil))
 
 // 1
 longestBranchCount(Node(
-        Node(nil, nil
-    ), nil))
+    Node(nil, nil),
+    nil))
 
 // 1
 longestBranchCount(Node(
-        Node(nil, nil),
-        Node(nil, nil)))
+    Node(nil, nil),
+    Node(nil, nil)))
 
 // 2
 longestBranchCount(Node(
-        Node(
-            nil,
-            Node(nil, nil)),
-        Node(nil, nil)))
+    Node(
+        nil,
+        Node(nil, nil)),
+    Node(nil, nil)))
 
 // 3
 longestBranchCount(Node(
+    Node(
+        nil,
         Node(
             nil,
-            Node(
-                nil,
-                Node(nil, nil))),
-        Node(nil, nil)))
+            Node(nil, nil))),
+    Node(nil, nil)))
