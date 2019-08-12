@@ -1,4 +1,3 @@
-import Foundation
 /*:
  # How to use HackerRank Helpers
  There are boilerplate helpers methods in the Sources folder in this playground. Here's a demo.
@@ -6,7 +5,7 @@ import Foundation
  ## String Manipulation
  To work with HackerRank questions quickly, convert between String <-> [Character].
  */
-"ABCD".charactersArray() // ["A", "B", "C", "D"]
+Array("ABCD") // ["A", "B", "C", "D"]
 
 ["a", "b", "c"].string() // "abc"
 

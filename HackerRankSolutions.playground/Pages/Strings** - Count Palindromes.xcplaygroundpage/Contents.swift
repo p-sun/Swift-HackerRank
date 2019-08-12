@@ -19,7 +19,7 @@ func countPalindromes(s: String) -> Int {
     }
     
     var count = 0
-    let chars = s.charactersArray()
+    let chars = Array(s)
     // O(n^2) for loop to check every substring.
     for i in 0 ..< chars.count {
         for j in i ..< chars.count {

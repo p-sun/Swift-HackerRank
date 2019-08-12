@@ -45,14 +45,6 @@ public extension String {
 }
 
 // MARK: - Character Helpers
-public extension String {
-	// To work with questions quickly, convert between String <-> [Character].
-	// This way, you can use Array subscripts on it.
-	func charactersArray() -> [Character] {
-		return self.map { $0 }
-	}
-}
-
 public extension Array where Iterator.Element == Character {
     // To work with interview questions quickly, convert between String <-> [Character].
     // This way, you can use Array subscripts on it.

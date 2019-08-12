@@ -9,7 +9,7 @@ Given a String with characters ordered alphabetically, cut a continuous block of
 func buildSubsequences(s: String) -> [String] {
     var permutations: [String] = [s]
 
-    let chars = s.charactersArray()
+    let chars = Array(s)
 
     for lengthToCut in 1 ..< chars.count {
         for startOfCut in 0 ... chars.count - lengthToCut {

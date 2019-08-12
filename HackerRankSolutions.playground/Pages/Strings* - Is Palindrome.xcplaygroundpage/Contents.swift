@@ -12,7 +12,7 @@ import Foundation
 // Convert to Lowercase, test is palindrome.
 // A palindrome test that cleans the string to contain only lowercase alphanumerics.
 func isPalindrome(_ s: String) -> Bool {
-    let characters = s.lowercased().charactersArray()
+    let characters = Array(s.lowercased())
     
     // Only keep alphanumeric characters.
     let cleaned = characters.filter { character in        
@@ -50,10 +50,12 @@ isPalindromeA("ABBA")
 isPalindromeA("ABCA")
 isPalindromeA("")
 isPalindromeA("A man, a plan, a canal: Panama")
+
 //: ## Method B
-// Behaves like method A, except it doesn't need a String extension.
+// Behaves like method A, except it doesn't need a String extension
+// BUT this is 5 times slower b/c Array(s) is slow
 func isPalindromeB(_ s: String) -> Bool {
-    let chars = s.charactersArray()
+    let chars = Array(s)
     
     let total = chars.count
     
@@ -67,3 +69,15 @@ func isPalindromeB(_ s: String) -> Bool {
 
 isPalindromeB("ABCBA")
 isPalindromeB("ABAL")
+
+var start = Date()
+for i in 0...1000 {
+    isPalindromeA("QWERTYUIOPOIUYTREWQ")
+}
+print(Date().timeIntervalSince(start)) // 0.0300050973892212
+
+start = Date()
+for i in 0...1000 {
+    isPalindromeB("QWERTYUIOPOIUYTREWQ")
+}
+print(Date().timeIntervalSince(start)) // 0.145528078079224
