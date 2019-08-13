@@ -98,5 +98,14 @@
  [Longest Common Subsequence](DP**%20-%20Longest%20Common%20Subsequence) | Medium | [HackerRank](https://www.hackerrank.com/challenges/dynamic-programming-classics-the-longest-common-subsequence/problem) |  CTCI🌟
  \
  Given 2 sequences, what's the longest (max length) common subsequences to both sequences?
+ 
+ ### Math
+ [Binary Gap](Math*%20-%20Binary%20Gap*) | Easy
+ \
+ Binary gap within a positive integer n is any maximal sequence of consecutive zeros
+ 
+ [Binary Conversion](Math*%20-%20Binary%20Conversion*) | Easy
+ \
+ Convert from integer in base 10 to a string in base 2
 */
-print("DP** - Longest Common Subsequence".addingPercentEncoding())
+print("Math* - Binary Conversion*".addingPercentEncoding())

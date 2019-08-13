@@ -31,8 +31,11 @@ Now look at combinations using coins of value 1 and 3.
 [1, 1, 1, 2, 2, 2, 3]
   
 */
+func ways(n: Int, coins: [Int]) -> Int {
+    return makeChange(target: n, coins: coins)
+}
 
- func makeChange(coins: [Int], target: Int) -> Int {
+func makeChange(target: Int, coins: [Int]) -> Int {
     
     // Number of combinations that sums to the index value.
     var combinations = Array(repeating: 0, count: target + 1)
@@ -42,24 +45,22 @@ Now look at combinations using coins of value 1 and 3.
     
     // For each type of coin,
     for coin in coins {
+        if coin > target {
+            continue
+        }
         
-        // For each sum value i from 1...target,
-        for i in 1...target {
-            if i >= coin {
-        
-                // combinations[i-coin] = For EVERY previous combination with a sum that is one coin value less than i, add the current coin to make a new combination summing to i.
-                // combinations[i] = # of combinations using coins smaller than the current coin.
-                combinations[i] = combinations[i] + combinations[i-coin]
-            }
+        // For each sum value i from coin...target,
+        for i in coin...target {
+            // combinations[i-coin] = For EVERY previous combination with a sum that is one coin value less than i, add the current coin to make a new combination summing to i.
+            // combinations[i] = # of combinations using coins smaller than the current coin.
+            combinations[i] = combinations[i] + combinations[i-coin]
         }
     }
     
     return combinations[target]
- }
- 
- makeChange(coins: [1, 3], target: 6)
+}
 
-// Get HackeRank Input
-// let n = intArrayForLine()[0]
-// let coins = intArrayForLine()
-// print( makeChange(coins: coins, target: n))
+assert(makeChange(target: 6, coins: [1, 3]) == 3)
+assert(makeChange(target: 4, coins: [1, 2, 3]) == 4)
+assert(makeChange(target: 10, coins: [2, 5, 3, 6]) == 5)
+assert(makeChange(target: 15, coins: [1, 5, 10, 25]) == 6)
