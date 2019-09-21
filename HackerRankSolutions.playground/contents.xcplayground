@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='rendered' last-migration='0830'>
+<playground version='6.0' target-platform='ios' display-mode='raw' last-migration='0830'>
     <pages>
         <page name='Index'/>
         <page name='How to format text with markup'/>
@@ -25,5 +25,6 @@
         <page name='Math* - Binary Gap*'/>
         <page name='Math* - Binary Conversion*'/>
         <page name='PrefixSums** - MinAvgTwoSlice'/>
+        <page name='LinkedList* - SinglyLinkedList'/>
     </pages>
 </playground>

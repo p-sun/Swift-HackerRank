@@ -1,99 +1,110 @@
-// Reverse a LinkedList
-// Methods are at the end of this Playground.
-// (This is not available in Swift on HackerRank yet.)
-
-import Foundation
-
-//: ## Define a Linked List
-class LinkedList<T> {
-    open class LinkedListNode<T> {
-        var value: T
-        var next: LinkedListNode?
-        weak var previous: LinkedListNode?
-        
-        public init(value: T) {
-            self.value = value
-        }
-    }
+//: # Reverse a DoublyLinkedList
+class Node {
+    let value: Int
+    var next: Node?
+    weak var prev: Node?
     
-    public typealias Node = LinkedListNode<T>
-    
-    fileprivate var head: Node?
-    
-    public init() {}
-    
-    open var isEmpty: Bool {
-        return head == nil
-    }
-    
-    open var first: Node? {
-        return head
-    }
-    
-    open var last: Node? {
-        guard var node = head else {
-            return nil
-        }
-        
-        while case let next? = node.next {
-            node = next
-        }
-        return node
-    }
-    
-    /// Append a value to the end of the list
-    ///
-    /// - Parameter value: The data value to be appended
-    open func append(_ value: T) {
-        let newNode = Node(value: value)
-        self.append(newNode)
-    }
-    
-    open func append(_ node: Node) {
-        let newNode = LinkedListNode(value: node.value)
-        if let lastNode = last {
-            newNode.previous = lastNode
-            lastNode.next = newNode
-        } else {
-            head = newNode
-        }
+    init(_ value: Int) {
+        self.value = value
     }
 }
 
-//: ## Other Linked List Methods
-extension LinkedList {
-    // Print LinkedList as a String for debugging.
-    public var description : String {
-        var values: String = ""
-        
-        var node = head
-        while let currentValue = node?.value {
-            values = values + "\(currentValue)" + " - "
-            node = node?.next
-        }
-        
-        return values
+class LinkedList {
+    
+    private var head: Node?
+    private var last: Node?
+
+    init() {}
+    
+    var isEmpty: Bool {
+        return head == nil
     }
     
-    /// Computed property to iterate through the linked list and return the total number of nodes
-    open var count: Int {
-        if var node = head {
-            var c = 1
-            while case let next? = node.next {
-                node = next
-                c += 1
-            }
-            return c
+    var first: Node? {
+        return head
+    }
+
+    func append(_ value: Int) {
+        let newLast = Node(value)
+        
+        if let oldLast = last {
+            oldLast.next = newLast
+            newLast.prev = oldLast
         } else {
-            return 0
+            head = newLast
         }
+        
+        last = newLast
+    }
+}
+//: ## Other Linked List Methods
+extension LinkedList: CustomStringConvertible {
+    // Print LinkedList as a String for debugging.
+    var description: String {
+        var result: String = ""
+        
+        var node = head
+        while let n = node {
+            result += "\(n.value) - "
+            node = n.next
+        }
+        
+        return result
+    }
+    
+    // Description, but starting from the last Node
+    func descriptionFromLast() -> String {
+        var result: String = ""
+        var node = last
+        while let n = node {
+            result = "\(n.value) - " + result
+            node = n.prev
+        }
+        return result
+    }
+    
+    func descriptionRecursive() -> String {
+        func result(from node: Node?) -> String {
+            guard let node = node else {
+                return ""
+            }
+            
+            return "\(node.value) - " + result(from: node.next)
+        }
+        
+        return result(from: head)
+    }
+    
+    func descriptionTailRecursive() -> String {
+        func description(from node: Node?, acc: String) -> String {
+            guard let node = node else {
+                return acc
+            }
+            
+            return description(from: node.next, acc: acc + "\(node.value) - ")
+        }
+        
+        return description(from: head, acc: "")
+    }
+}
+
+extension LinkedList {
+    /// Computed property to iterate through the linked list and return the total number of nodes
+    var count: Int {
+        var c = 0
+        var next = head
+        while let current = next {
+            c += 1
+            next = current.next
+        }
+        return c
     }
     
     /// Function to return the node at a specific index. Crashes if index is out of bounds (0...self.count)
     ///
     /// - Parameter index: Integer value of the node's index to be returned
     /// - Returns: Optional LinkedListNode
-    open func node(atIndex index: Int) -> Node? {
+    func node(atIndex index: Int) -> Node? {
         if index >= 0 {
             var node = head
             var i = index
@@ -109,39 +120,39 @@ extension LinkedList {
     /// Subscript function to return the node at a specific index
     ///
     /// - Parameter index: Integer value of the requested value's index
-    open subscript(index: Int) -> T {
+    subscript(index: Int) -> Int {
         let node = self.node(atIndex: index)
         assert(node != nil)
         return node!.value
     }
 }
-
 //: ## Reverse a Linked List
 extension LinkedList {
     // Method A - Reverse a linked list. Mutating.
     // Note that we use 3 pointers (nextNode, currentNode, and head)
     // to prevent ARC from garbage collecting nodes while we move the pointers around.
     func reverse() {
-        var nextNode = head
+        last = head
         
-        while let currentNode = nextNode {
-            nextNode = currentNode.next
-            swap(&currentNode.next, &currentNode.previous)
-            head = currentNode
+        var next = head
+        while let current = next {
+            next = current.next
+            swap(&current.next, &current.prev)
+            head = current
         }
     }
     
     // Method B: Reverse a linked list. Non-mutating.
-    func reversed() -> LinkedList<T> {
-        let reversedList = LinkedList<T>()
+    func reversed() -> LinkedList {
+        let reversedList = LinkedList()
         var currentHead = head
         
         while (currentHead != nil) {
             // Add a new node to the reversedList, using the value from the head of the old list
             if let newValue = currentHead?.value {
-                let newHead = Node(value: newValue)
+                let newHead = Node(newValue)
                 
-                reversedList.head?.previous = newHead
+                reversedList.head?.prev = newHead
                 newHead.next = reversedList.head
                 reversedList.head = newHead
             }
@@ -155,7 +166,7 @@ extension LinkedList {
 }
 
 // Execute reverse.
-var list = LinkedList<Int>()
+var list = LinkedList()
 list.append(10)
 list.append(11)
 list.append(12)
@@ -166,3 +177,8 @@ list
 
 list.reverse()  // mutating reverse for HackerRank
 list
+list.descriptionFromLast()
+list.descriptionRecursive()
+list.descriptionTailRecursive()
+
+list.count
