@@ -24,5 +24,6 @@
         <page name='Permutations* - Count Cubes'/>
         <page name='Math* - Binary Gap*'/>
         <page name='Math* - Binary Conversion*'/>
+        <page name='PrefixSums** - MinAvgTwoSlice'/>
     </pages>
 </playground>
