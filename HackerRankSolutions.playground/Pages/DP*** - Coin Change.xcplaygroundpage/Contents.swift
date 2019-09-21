@@ -42,7 +42,8 @@ func makeChange(target: Int, coins: [Int]) -> Int {
     
     // Base Case: There is 1 combination of coins to sum to 0. (i.e. 0 coins sum to 0)
     combinations[0] = 1
-    
+    print("coin: 0  comb[0] = 1  \(combinations)")
+
     // For each type of coin,
     for coin in coins {
         if coin > target {
@@ -53,14 +54,17 @@ func makeChange(target: Int, coins: [Int]) -> Int {
         for i in coin...target {
             // combinations[i-coin] = For EVERY previous combination with a sum that is one coin value less than i, add the current coin to make a new combination summing to i.
             // combinations[i] = # of combinations using coins smaller than the current coin.
+            
+            print("coin: \(coin)  comb[\(i)]: \(combinations[i] + combinations[i-coin]) = \(combinations[i]) + \(combinations[i-coin])")
             combinations[i] = combinations[i] + combinations[i-coin]
         }
+        print(combinations)
     }
     
     return combinations[target]
 }
 
-assert(makeChange(target: 6, coins: [1, 3]) == 3)
+//assert(makeChange(target: 6, coins: [1, 3]) == 3)
 assert(makeChange(target: 4, coins: [1, 2, 3]) == 4)
-assert(makeChange(target: 10, coins: [2, 5, 3, 6]) == 5)
-assert(makeChange(target: 15, coins: [1, 5, 10, 25]) == 6)
+//assert(makeChange(target: 10, coins: [2, 5, 3, 6]) == 5)
+//assert(makeChange(target: 15, coins: [1, 5, 10, 25]) == 6)
