@@ -12,7 +12,7 @@ class Node {
 class LinkedList {
     
     private var head: Node?
-    private var last: Node?
+    private var tail: Node?
 
     init() {}
     
@@ -27,21 +27,30 @@ class LinkedList {
     func append(_ value: Int) {
         let newLast = Node(value)
         
-        if let oldLast = last {
+        if let oldLast = tail {
             oldLast.next = newLast
             newLast.prev = oldLast
         } else {
             head = newLast
         }
         
-        last = newLast
+        tail = newLast
     }
 }
-//: ## Other Linked List Methods
+//: Helpers
+extension LinkedList {
+    convenience init(_ values: Int...) {
+        self.init()
+        for value in values {
+            append(value)
+        }
+    }
+}
+//: ## String Description
 extension LinkedList: CustomStringConvertible {
     // Print LinkedList as a String for debugging.
     var description: String {
-        var result: String = ""
+        var result: String = "List: "
         
         var node = head
         while let n = node {
@@ -52,10 +61,10 @@ extension LinkedList: CustomStringConvertible {
         return result
     }
     
-    // Description, but starting from the last Node
+    // Description, but starting from the tail Node
     func descriptionFromLast() -> String {
         var result: String = ""
-        var node = last
+        var node = tail
         while let n = node {
             result = "\(n.value) - " + result
             node = n.prev
@@ -87,7 +96,7 @@ extension LinkedList: CustomStringConvertible {
         return description(from: head, acc: "")
     }
 }
-
+//: ## Other Methods
 extension LinkedList {
     /// Computed property to iterate through the linked list and return the total number of nodes
     var count: Int {
@@ -100,28 +109,64 @@ extension LinkedList {
         return c
     }
     
+    func removeFirst(value: Int) -> Node? {
+        guard let nodeToRemove = firstNode(with: value) else {
+            return nil
+        }
+        
+        let next = nodeToRemove.next
+        let prev = nodeToRemove.prev
+        prev?.next = next
+        next?.prev = prev
+        
+        if head === nodeToRemove {
+            head = next
+        }
+        if tail === nodeToRemove {
+            tail = prev
+        }
+        
+        return nodeToRemove
+    }
+    
+    func firstNode(with value: Int) -> Node? {
+        var next = head
+        while let current = next {
+            if current.value == value {
+                return current
+            }
+            next = current.next
+        }
+        return next
+    }
+    
+    func removeAll() {
+        head = nil
+        tail = nil
+    }
+    
     /// Function to return the node at a specific index. Crashes if index is out of bounds (0...self.count)
     ///
     /// - Parameter index: Integer value of the node's index to be returned
     /// - Returns: Optional LinkedListNode
-    func node(atIndex index: Int) -> Node? {
-        if index >= 0 {
-            var node = head
-            var i = index
-            while node != nil {
-                if i == 0 { return node }
-                i -= 1
-                node = node!.next
-            }
+    func node(at index: Int) -> Node? {
+        guard index >= 0 else {
+            return nil
         }
-        return nil
+
+        var current = head
+        for _ in 0..<index {
+            if current == nil { return nil }
+            current = current?.next
+        }
+        return current
     }
     
     /// Subscript function to return the node at a specific index
     ///
     /// - Parameter index: Integer value of the requested value's index
     subscript(index: Int) -> Int {
-        let node = self.node(atIndex: index)
+        let node = self.node(at: index)
         assert(node != nil)
         return node!.value
     }
@@ -132,7 +177,7 @@ extension LinkedList {
     // Note that we use 3 pointers (nextNode, currentNode, and head)
     // to prevent ARC from garbage collecting nodes while we move the pointers around.
     func reverse() {
-        last = head
+        tail = head
         
         var next = head
         while let current = next {
@@ -164,21 +209,44 @@ extension LinkedList {
         return reversedList
     }
 }
-
-// Execute reverse.
+//: ## Execute
 var list = LinkedList()
 list.append(10)
 list.append(11)
 list.append(12)
 list.append(13)
+list.count
 
 list.reversed() // non-mutating
 list
 
 list.reverse()  // mutating reverse for HackerRank
-list
+list.description
 list.descriptionFromLast()
 list.descriptionRecursive()
 list.descriptionTailRecursive()
 
-list.count
+list.firstNode(with: 2)
+list.firstNode(with: 10)?.value
+list.firstNode(with: 12)?.value
+list.firstNode(with: 13)?.value
+
+var list2 = LinkedList(10, 11, 12, 13)
+list2.removeFirst(value: 10)?.value
+list2
+list2.removeFirst(value: 10)?.value
+list2
+list2.removeFirst(value: 12)?.value
+list2
+list2.removeFirst(value: 13)?.value
+list2
+list2.removeFirst(value: 11)?.value
+list2
+
+var list3 = LinkedList(10, 11, 12, 13)
+list3.node(at: -1)?.value
+list3.node(at: 0)?.value
+list3.node(at: 1)?.value
+list3.node(at: 2)?.value
+list3.node(at: 3)?.value
+list3.node(at: 4)?.value
