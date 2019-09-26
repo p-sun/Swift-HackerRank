@@ -69,12 +69,10 @@ rainbowFlagScalars
  */
 //: Trim off both ends of non-letters
 "@#$ abCD !@#$ E ".trimmingCharacters(in: CharacterSet.letters.inverted)
-
 //: Remove non-letters from full string 🌟 🌟 🌟 🌟 🌟
 let cleanedString = "@#$ abCD !@#$ E ".filter { c in
     return c.description.rangeOfCharacter(from: CharacterSet.letters) != nil
 }
-
 /*:
  FYI. string.rangeOfCharacter(from: .letters)
  gets you the range of the first letter in the string
