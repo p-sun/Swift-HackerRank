@@ -71,13 +71,13 @@ isPalindromeB("ABCBA")
 isPalindromeB("ABAL")
 
 var start = Date()
-for i in 0...1000 {
+for _ in 0...1000 {
     isPalindromeA("QWERTYUIOPOIUYTREWQ")
 }
 print(Date().timeIntervalSince(start)) // 0.0300050973892212
 
 start = Date()
-for i in 0...1000 {
+for _ in 0...1000 {
     isPalindromeB("QWERTYUIOPOIUYTREWQ")
 }
 print(Date().timeIntervalSince(start)) // 0.145528078079224
