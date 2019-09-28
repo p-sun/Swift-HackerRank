@@ -1,43 +1,24 @@
-// Bubblesort:
-// https://www.hackerrank.com/challenges/ctci-bubble-sort/problem
-
-import Foundation
-
-// Extension to swap elements in an array
-extension MutableCollection where Index == Int {
-    mutating func swapAt(_ a: Int, _ b: Int) {
-        Swift.swap(&self[a], &self[b])
+//: ## BubbleSort
+extension Array where Element: Comparable {
+    mutating func bubbleSort() {
+        for i in 0..<count {
+            for j in 1..<count - i {
+                if self[j - 1] > self[j] {
+                    swapAt(j - 1, j)
+                }
+            }
+        }
     }
 }
 
-// read the integer n
-//let n = Int(readLine()!)!
+var arr = [2, 5, 7, -2, 33]
+arr.bubbleSort()
 
-// read the array
-//var array = readLine()!.components(separatedBy: " ").map{ Int($0)! }
+arr = []
+arr.bubbleSort()
 
-var array = [333, 44, 88, 9999, 12]
-var isSorted: Bool
-var numberOfSwaps = 0
+arr = [3]
+arr.bubbleSort()
 
-repeat {
-    isSorted = true
-    
-    // Check each value in the array
-    for i in 0..<array.count - 1 {
-        
-        // Compare current value to the next
-        if array[i] > array[i + 1] {
-            
-            // Swap if needed
-            array.swapAt(i, i + 1)
-            isSorted = false
-            numberOfSwaps += 1
-        }
-    }
-    
-} while (!isSorted)
-
-print("Array is sorted in \(numberOfSwaps) swaps."
-    + "\nFirst Element: \(array.first!)"
-    + "\nLast Element: \(array.last!)")
+arr = [3, 1]
+arr.bubbleSort()

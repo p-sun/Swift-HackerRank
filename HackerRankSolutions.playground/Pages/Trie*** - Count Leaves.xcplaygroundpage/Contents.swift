@@ -47,6 +47,7 @@ func insert(_ word: String) {
 func countLeaves(_ prefix: String) -> Int {
     var current = root
     
+    // Get current node for prefix
     for letterScalar in prefix.unicodeScalars {
         let index = indexForLetter(letterScalar)
         if let childNode = current.children[index] {

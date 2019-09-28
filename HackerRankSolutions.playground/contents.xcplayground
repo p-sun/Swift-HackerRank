@@ -18,6 +18,8 @@
         <page name='Array*** - Add Interval'/>
         <page name='Array** - Merge Intervals'/>
         <page name='Sort* - BubbleSort'/>
+        <page name='Sort - BubbleSort'/>
+		<page name='Sort* - QuickSort'/>
         <page name='LinkedList* - SinglyLinkedList'/>
         <page name='LinkedList* - Reverse a Doubly Linked List'/>
         <page name='Tree* - Count The Longest Branch'/>
@@ -31,7 +33,6 @@
         <page name='DP* - Fibonacci Numbers'/>
         <page name='DP** - Longest Common Subsequence'/>
         <page name='DP*** - Coin Change'/>
-        <page name='Sort* - QuickSort'/>
         <page name='DS* - Heap'/>
     </pages>
 </playground>
