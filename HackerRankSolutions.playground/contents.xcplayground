@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<playground version='6.0' target-platform='ios' display-mode='rendered' last-migration='0830'>
+<playground version='6.0' target-platform='ios' display-mode='raw' last-migration='0830'>
     <pages>
         <page name='Index'/>
         <page name='How to format text with markup'/>
@@ -9,6 +9,7 @@
         <page name='Strings** - Count Palindromes'/>
         <page name='Strings* - Is Palindrome'/>
         <page name='Strings* - isPalindromePermutation CT1.4'/>
+        <page name='Strings* - At Most One Edit Away CT1.5'/>
         <page name='Array* - Making Anagrams'/>
         <page name='Array** - Max Product of Two Ints'/>
         <page name='Array* - Two Ints that Add to Target'/>
