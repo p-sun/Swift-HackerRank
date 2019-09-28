@@ -21,15 +21,19 @@ assert(Int.max == maxInt)
  */
 extension Int {
     func binaryString() -> String {
-        if self < 2 {
-            return String(self)
-        }
-        return (self / 2).binaryString().description
-             + (self % 2).description
+        return String(self, radix: 2)
+    }
+}
+extension UInt8 {
+    func binaryString() -> String {
+        return String(self, radix: 2)
     }
 }
 extension String {
-    func binaryNumber() -> Int {
+    func binaryNumber() -> UInt8 { // Unsigned
+        return UInt8(self, radix: 2)!
+    }
+    func binaryNumberSigned() -> Int { // Signed
         return Int(self, radix: 2)!
     }
 }
@@ -49,9 +53,15 @@ extension String {
 8 >> 1
 8 >> 2
 8 >> 3
+//: NOT operator   ~            ODD NUMBER of 1s
+// NOT operator on an Unsigned integer, like UInt8, UInt32, UInt62    just flips all the 0s and 1s
+(~"0110".binaryNumber()).binaryString()
+
+// NOT operator on an signed integer's meaning is not as clear
+("0110".binaryNumberSigned()).binaryString()
+(~"0110".binaryNumberSigned()).binaryString()
+(~(1 << 6)).binaryString()
 //: AND operator    &           BOTH are 1s
-UInt8("0101", radix: 2)! & UInt8("1100", radix: 2)! // 0100
-UInt8("0101", radix: 2)! & UInt8("0101", radix: 2)! // 0101
 ("0101".binaryNumber() & "1100".binaryNumber()).binaryString()
 ("0101".binaryNumber() & "0101".binaryNumber()).binaryString()
 ("0101".binaryNumber() & "1010".binaryNumber()).binaryString()
@@ -64,7 +74,7 @@ UInt8("0101", radix: 2)! & UInt8("0101", radix: 2)! // 0101
  ## OptionSet
 */
 struct Schedule: OptionSet {
-    let rawValue: Int
+    let rawValue: UInt8
     static let monday     = Schedule(rawValue: 1 << 0) // 1  - 00000001
     static let tuesday    = Schedule(rawValue: 1 << 1) // 2  - 00000010
     static let wednesday  = Schedule(rawValue: 1 << 2) // 4  - 00000100
@@ -72,11 +82,15 @@ struct Schedule: OptionSet {
     static let friday     = Schedule(rawValue: 1 << 4) // 16 - 00010000
     static let saturday   = Schedule(rawValue: 1 << 5) // 32 - 00100000
     static let sunday     = Schedule(rawValue: 1 << 6) // 64 - 01000000
+    
+    static let weekdays: Schedule = [.monday, .tuesday, .wednesday, .thursday,
+                                     .friday, .saturday, .sunday]
+    static let weekend: Schedule = [.saturday, .sunday]
 }
 //: Initializing an OptionSet
 let wedn: Schedule = .wednesday
 assert(wedn.rawValue == 4)
-assert(wedn.rawValue == Int("00000100", radix: 2))
+assert(wedn.rawValue == UInt8("00000100", radix: 2))
 //: Union of OptionSets
 let tuesOrWed: Schedule = [.tuesday, .wednesday]
 tuesOrWed.rawValue.binaryString()
@@ -86,3 +100,7 @@ friOrSat.rawValue.binaryString()
 //: Checking if an OptionSet contains a certain element
 assert(friOrSat.contains(.friday))
 assert(!friOrSat.contains(.tuesday))
+assert(friOrSat.contains(friOrSat))
+
+assert(!Schedule.weekend.contains(.tuesday))
+assert(Schedule.weekdays.contains(tuesOrWed))
