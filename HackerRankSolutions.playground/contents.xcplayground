@@ -29,6 +29,7 @@
         <page name='DP* - Fibonacci Numbers'/>
         <page name='DP** - Longest Common Subsequence'/>
         <page name='DP*** - Coin Change'/>
+        <page name='Sort* - QuickSort'/>
         <page name='DS* - Heap'/>
     </pages>
 </playground>
